@@ -11,6 +11,8 @@ using namespace std;
 class LeftistHeapNode;
 class LeftistHeap;
 
+LeftistHeapNode* SingleNode;
+
 LeftistHeap::LeftistHeap()
 {
 	root = NULL;
@@ -22,10 +24,11 @@ void LeftistHeap::merge(LeftistHeap* H)
 	root = merge(root, H->root);
 }
 
-void LeftistHeap::Insert(ElementType X)
+LeftistHeapNode* LeftistHeap::Insert(ElementType X)
 {
 	root = Insert(root, X);
 	++Size;
+	return SingleNode;
 }
 
 ElementType LeftistHeap::DeleteMin()
@@ -60,7 +63,6 @@ LeftistHeapNode* LeftistHeap::merge1(LeftistHeapNode* H1, LeftistHeapNode* H2)
 
 LeftistHeapNode* LeftistHeap::Insert(LeftistHeapNode* H, ElementType X)
 {
-	LeftistHeapNode* SingleNode;
 	SingleNode = (LeftistHeapNode*)malloc(sizeof(LeftistHeapNode));
 	
 	if(SingleNode == NULL){
